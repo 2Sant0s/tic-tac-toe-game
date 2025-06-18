@@ -5,7 +5,7 @@
  <a href="#tech" title="technologies">Technologies</a> • 
  <a href="#about" title="about">About</a> • 
  <a href="#clone" title="clone">Clone</a> •
- <a href="https://github.com/2Sant0s/form-login-tecnotrends/blob/main/index.html">Project</a>
+ <a href="https://github.com/2Sant0s/tic-tac-toe-game/blob/main/index.html">Project</a>
 </p>
 
 <h2 id="layout">🎨 Layout</h2>
