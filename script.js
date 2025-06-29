@@ -18,51 +18,51 @@ var Game = {
 		this.currentPlayer = this.currentPlayer === '❌' ? '⚫' : '❌';
 	},
 	setField(line, column) {
-		 if(!this.isFinished && this.field[line][column] === '') {
-		 	this.field[line][column] = this.currentPlayer;
-		 	this.nextPlayer();
-		 	this.round++;
-		 	this.render();
-		 }
+		if (!this.isFinished && this.field[line][column] === '') {
+			this.field[line][column] = this.currentPlayer;
+			this.nextPlayer();
+			this.round++;
+			this.render();
+		}
 	},
 	isGameOver() {
 		var field = this.field,
-		rows = 3,
-		cols = 3,
-		totalRow = 0,
-		totalCol = 0;
-		for(var i = 0; i < rows; i++) {
+			rows = 3,
+			cols = 3,
+			totalRow = 0,
+			totalCol = 0;
+		for (var i = 0; i < rows; i++) {
 			totalRow = 0;
 			totalCol = 0;
 
-			for(var j = 0; j < cols; j++) {
-				if(field[i][j] === '❌') {
+			for (var j = 0; j < cols; j++) {
+				if (field[i][j] === '❌') {
 					totalRow++;
 				}
-				if(field[i][j] === '⚫') {
+				if (field[i][j] === '⚫') {
 					totalRow--;
 				}
-				if(field[j][i] === '❌') {
+				if (field[j][i] === '❌') {
 					totalCol++;
 				}
-				if(field[j][i] === '⚫') {
+				if (field[j][i] === '⚫') {
 					totalCol--;
 				}
 			}
-			if(totalRow === 3 || totalCol === 3) {
+			if (totalRow === 3 || totalCol === 3) {
 				return '❌'
 			}
-			if(totalRow === -3 || totalCol === -3) {
+			if (totalRow === -3 || totalCol === -3) {
 				return '⚫'
 			}
 		}
-		if(field[0][0] !== '' && field[0][0] === field[1][1] && field[1][1] === field[2][2]) {
+		if (field[0][0] !== '' && field[0][0] === field[1][1] && field[1][1] === field[2][2]) {
 			return field[0][0];
 		}
-		if(field[0][2] !== '' && field[0][2] === field[1][1] && field[1][1] === field[2][0]) {
+		if (field[0][2] !== '' && field[0][2] === field[1][1] && field[1][1] === field[2][0]) {
 			return field[0][2];
 		}
-		if(this.round === rows * cols) {
+		if (this.round === rows * cols) {
 			return 'Ninguém...';
 		}
 
@@ -71,11 +71,11 @@ var Game = {
 		var winner = this.isGameOver();
 		divElement.textContent = winner ? `Vencedor: ${winner}` : `Jogador: ${this.currentPlayer}`;
 
-		if(winner) {
+		if (winner) {
 			this.isFinished = true;
 		}
 		var template = '';
-		this.field.forEach((line, lineIndex)=> {
+		this.field.forEach((line, lineIndex) => {
 			template += '<tr>';
 			line.forEach((column, columnIndex) => {
 				template += `<td onclick="Game.setField(${lineIndex}, ${columnIndex})">${column}</td>`;
